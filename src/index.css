@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .body-text {
+    @apply text-[15px] leading-relaxed text-foreground;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 217 33% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 217 33% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 33% 18%;
+    --primary: 204 70% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 217 33% 18%;
+    --muted: 210 40% 94%;
+    --muted-foreground: 217 18% 48%;
+    --accent: 210 63% 79%;
+    --accent-foreground: 217 33% 18%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 40% 90%;
+    --input: 210 40% 90%;
+    --ring: 204 70% 53%;
+    --radius: 0.75rem;
+    --font-heading: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 217 33% 18%;
+    --sidebar-primary: 204 70% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 63% 90%;
+    --sidebar-accent-foreground: 217 33% 18%;
+    --sidebar-border: 210 40% 90%;
+    --sidebar-ring: 204 70% 53%;
+  }
+
+  .dark {
+    --background: 217 33% 12%;
+    --foreground: 210 40% 98%;
+    --card: 217 33% 16%;
+    --card-foreground: 210 40% 98%;
+    --popover: 217 33% 16%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 204 70% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 30% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 30% 20%;
+    --muted-foreground: 217 15% 65%;
+    --accent: 217 30% 25%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 30% 25%;
+    --input: 217 30% 25%;
+    --ring: 204 70% 53%;
+    --chart-1: 204 70% 53%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 217 33% 16%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 204 70% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 30% 22%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 30% 25%;
+    --sidebar-ring: 204 70% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+.lift-card {
+  box-shadow: 0 1px 2px hsl(var(--foreground) / 0.05), 0 12px 32px -14px hsl(var(--foreground) / 0.12);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.lift-hover:hover {
+  box-shadow: 0 2px 4px hsl(var(--foreground) / 0.06), 0 20px 42px -14px hsl(var(--foreground) / 0.18);
+  transform: translateY(-3px);
+}
+
+.hero-wash {
+  background: linear-gradient(180deg, hsl(var(--accent) / 0.4) 0%, hsl(var(--background)) 78%);
+}
+
+.btn-lift {
+  transition: box-shadow 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary-lift:hover {
+  box-shadow: 0 12px 28px -8px hsl(var(--primary) / 0.5);
+  transform: translateY(-1px);
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  html,
+  body {
+    background: white !important;
+  }
+
+  body {
+    color: black !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  .print-area {
+    max-width: 100% !important;
+    padding: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .lift-card,
+  .print-card {
+    box-shadow: none !important;
+    border: 1px solid hsl(var(--border)) !important;
+    break-inside: avoid;
+  }
+
+  .lift-hover:hover {
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .print-header {
+    break-after: avoid;
+    border-bottom: 1px solid hsl(var(--border));
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+
+  .print-footer {
+    break-before: avoid;
+    border-top: 1px solid hsl(var(--border));
+    padding-top: 8px;
+    margin-top: 24px;
+  }
+}
